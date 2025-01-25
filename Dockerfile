@@ -5,7 +5,6 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y nodejs npm
 
 # Copy requirements.txt and install dependencies
 COPY requirements.txt .
@@ -13,12 +12,6 @@ RUN pip install -r requirements.txt
 
 # Copy the application files into the container
 COPY . .
-
-# Install Node.js dependencies (including Tailwind CSS)
-RUN npm install
-
-# Build Tailwind CSS
-RUN npm run build
 
 # Collect static files
 RUN python manage.py collectstatic --noinput
