@@ -16,6 +16,7 @@ COPY package.json package-lock.json ./
 RUN npm install
 
 RUN pip install Django==5.1.4
+RUN pip install django-tailwind
 
 RUN pip freeze
 
