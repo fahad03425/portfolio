@@ -9,5 +9,4 @@ services:
       - .:/app
     environment:
       - DEBUG=False
-      - SECRET_KEY=django-insecure-8(6ko5+&&jw)iyw@(wxip$+9zd8^h8x54rr8!i&$q80sb&%ep0
       - ALLOWED_HOSTS=3.142.130.57,your-domain.com,www.your-domain.com,
