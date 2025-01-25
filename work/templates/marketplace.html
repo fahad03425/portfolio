@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Marketplace Project | M. Fahad{% endblock %}
+
+{% block content %}
+<section class="flex flex-col xsm:flex-row flex-wrap items-start justify-start lg:h-40vh xsm:h-80vh xsm:ml-3 xsm:mr-3 lg:mx-44 mt-20 border-b-2">
+    <h1 class="text-5xl lg:text-6xl font-extrabold text-white text-start xsm:ml-3 mb-4 mr-8">PhoneKart: Marketplace </h1>
+    <p class="text-white text-lg lg:text-2xl text-justify mb-8 px-3 max-w-2xl">
+        Dation Onderweg is a cross-platform mobile application designed for driving school administrators and instructors.
+        It allows them to plan or edit appointments and access daily or weekly schedules.
+    </p>
+    
+    <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <span class="bg-gray-800 text-gray-300 text-sm lg:text-base font-semibold px-4 py-2 rounded-full">Frontend</span>
+        <span class="bg-gray-800 text-gray-300 text-sm lg:text-base font-semibold px-4 py-2 rounded-full">Mobile</span>
+        <span class="bg-gray-800 text-gray-300 text-sm lg:text-base font-semibold px-4 py-2 rounded-full">Jinja Templating</span>
+        <span class="bg-gray-800 text-gray-300 text-sm lg:text-base font-semibold px-4 py-2 rounded-full">Django</span>
+    </div>
+    
+    <div class="flex flex-wrap justify-center gap-4 mb-8 mx-auto">
+    <a href="https://fyp2-6d97.onrender.com/"
+       target="_blank"
+       class="inline-flex items-center justify-center px-8 py-4 text-white text-lg lg:text-xl font-semibold bg-gradient-to-r from-blue-500 to-purple-600 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300">
+        Visit
+        <span class="ml-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M3.5 13a1.5 1.5 0 0 1-1.5-1.5v-7A1.5 1.5 0 0 1 3.5 3h5a.5.5 0 0 1 0 1h-5A.5.5 0 0 0 3 4.5v7a.5.5 0 0 0 .5.5h7a.5.5 0 0 1 0 1h-7zm10-10a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h4.793L8.146 8.146a.5.5 0 1 0 .708.708L13 4.707V9.5a.5.5 0 0 0 1 0v-5z"/>
+            </svg>
+        </span>
+    </a>
+</div>
+</section>
+{% endblock %}
+ {% block bcontent %}
+ <section class="bg-blackish lg:h-70vh border-none xsm:h-80vh ">
+        
+        <div class="flex  flex-col  align-middle text-center items-center pt-16 xsm:px-5">
+         <a href="{% url 'work:phonemarketplace' %}" class="lg:w-2/5 hover:shadow-xl transform hover:scale-105 transition duration-300">
+          <img  src="{% static 'images/fyp.jpg' %}" 
+          class="lg:h-128  xsm:h-56 xsm:w-full  rounded-3xl border-solid border-4  shadow-glow-gradient" 
+          alt="" >
+         </a>
+
+        </div>
+      </section>
+ 
+ {% endblock  %}
+ {% block ccontent %}
+
+ <section class="flex flex-col bg-blackish text-gray-300 px-6 pb-7 lg:pb-9 lg:mx-auto ml items-center justify-center ">
+    <h2 class="text-left text-3xl lg:text-4xl font-bold text-white mb-8">My Contributions</h2>
+    <ul class="list-disc pl-6 space-y-4 text-left text-xl ">
+        <li>Developed a fully functional marketplace platform with seamless buyer and seller interaction.</li>
+        <li>Implemented a robust user authentication system with three distinct user roles: buyers, sellers, and admins.</li>
+        <li>Enhanced search functionality for better product discovery and streamlined user experience.</li>
+        <li>Optimized database queries, reducing response times for product listings and search results by 50%.</li>
+        <li>Designed a mobile-first responsive UI using TailwindCSS, ensuring smooth usability across devices.</li>
+        <li>Integrated a seller registration system, enabling users to create and manage their shops efficiently.</li>
+    </ul>
+
+    <h2 class="text-left text-3xl lg:text-4xl font-bold text-white mt-12 mb-8">Tech Stack</h2>
+    <div class="text-left text-xl space-y-2">
+        <p><strong>Design:</strong> Figma, Adobe XD</p>
+        <p><strong>Frontend:</strong> React, TailwindCSS, JavaScript (ES6+)</p>
+        <p><strong>Backend:</strong> Django, Python</p>
+        <p><strong>Database:</strong> PostgreSQL</p>
+        <p><strong>Testing:</strong> Pytest, Postman</p>
+        <p><strong>Build/Release:</strong> Docker, GitHub Actions, Nginx</p>
+    </div>
+</section>
+
+
+ {% endblock  %}

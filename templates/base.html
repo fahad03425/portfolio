@@ -1,0 +1,47 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Website{% endblock %}</title>
+    {% tailwind_css %}
+</head>
+<body class="bg-gray-50">
+    <!-- Main Background Section -->
+    <section class="h-auto sm:min-h-full bg-top3 bg-cover bg-no-repeat relative">
+        <div class="absolute inset-0 flex justify-center z-0 {% if hide_bg_image %}hidden{% endif %}">
+            <img src="{% static 'images/bg-main-dark.svg' %}" alt="Overlay" class="opacity-70">
+        </div>
+
+        <!-- Content Section -->
+        <section class="lg:mx-32 lg:pt-20 lg:pb-1 sm:pb-10">
+            <!-- Include the navbar -->
+            {% include 'navbar.html' %}
+            
+            <!-- Main content -->
+            <main class="xsm:pb-2 lg:pb-0 md:pb-0">
+                {% block content %}{% endblock %}
+            </main>
+        </section>
+    </section>
+
+    <!-- Additional Content Section -->
+    <section class="" >
+        {% block bcontent %}{% endblock %}
+    </section>
+    <section>
+        {% block ccontent %}
+            
+        {% endblock %}
+        
+    </section>
+
+    <!-- Footer -->
+    <footer class="">
+        {% include 'footer.html' %}
+    </footer>
+</body>
+</html>
+

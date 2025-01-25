@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - My Website{% endblock %}
+
+{% block content %}
+<section class="lg:h-less-screen border-none xsm:h-70vh">
+    <div class=" lg:space-y-6 lg:mx-72 xsm:px-5 text-start mt-20">
+        <h2 class="text-6xl md:text-6xl font-bold text-white mb-5">My Work</h2>
+        <p class="text-xl md:text-2xl text-gray-400">
+            See my most recent projects below to get an idea of my past experience.
+        </p>
+    </div>
+    <div class="flex  flex-col  align-middle text-center items-center pt-16 xsm:px-5">
+     <a href="{% url 'work:phonemarketplace' %}" class="lg:w-2/5 hover:shadow-xl transform hover:scale-105 transition duration-300">
+      <img  src="{% static 'images/fyp.jpg' %}" 
+      class="lg:h-128  xsm:h-56 xsm:w-full  rounded-3xl border-solid border-4  shadow-glow-gradient" 
+      alt="" >
+     </a>
+      <p class="lg:text-5xl font-bold text-white mt-8 xsm:text-3xl mb-16">Phone Marketplace</p>
+    </div>
+  </section>
+{% endblock %}

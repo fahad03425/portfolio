@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home|M. Fahad{% endblock %}
+
+{% block content %}
+<section class="top-32 lg:mb-1 lg:mt-2 xsm:mb-36 xsm:mt-80 relative z-30 flex flex-col-reverse md:flex-row items-center justify-between sm:h-more-screen xsm:h-more-screens h-less-screen sm:p-top-18 lg:pt-0 px-6 md:px-20  text-white">
+    <!-- Left Section: Text Content -->
+    <div class="flex-1 lg:pl-28 text-center md:text-left space-y-4 xsm:pt-5 sm:pt-5 xsm:h-fit ">
+        <h1 class="text-4xl md:text-8xl font-bold">Hello, my name is <span class="text-indigo-400">Muhammad Fahad</span></h1>
+        <p class="text-lg md:text-2xl text-gray-400">
+            Fullstack Engineer specializing in frontend and backend technologies.
+        </p>
+        <div class="flex flex-wrap justify-center md:justify-start gap-4">
+            <span class="px-6 py-3 bg-gray-800 text-sm md:text-2xl font-semibold rounded-full flex items-center gap-2">
+                <i class="fab fa-django text-green-700"></i> Django
+            </span>
+            <span class="px-4 py-2 bg-gray-800 text-sm md:text-2xl font-semibold  rounded-full flex items-center gap-2">
+                <i class="fab fa-react text-blue-400"></i> React
+            </span>
+            <span class="px-4 py-2 bg-gray-800 text-sm md:text-2xl font-semibold  rounded-full flex items-center gap-2">
+                <i class="fab fa-js text-yellow-400"></i> Javascript
+            </span>
+        </div>
+    </div>
+
+    <!-- Right Section: Image -->
+    <div class="flex flex-1 items-center justify-center align-middle lg:h-4/6">
+        <img src="{% static 'images/fahad.jpg' %}" alt="MFahad Profile" class="rounded-3xl shadow-lg  lg:w-4/5 mb-10 sm:mt-10  z-20">
+    </div>
+</section>
+{% endblock %}
+
+{% block bcontent %}
+<section class="flex items-center justify-center bg-blackish  lg:px-16  xsm:px-4 md:px-20 xsm:pt-14 ">
+  <div class="flex flex-col md:flex-row justify-around items-center bg-blackish text-white py-8 rounded-3xl shadow-lg border gap-4 w-full px-13 border-solid  lg:ml-40 lg:mr-40  xsm:px-3">
+    <!-- UX/UI and SEO -->
+    <div class="flex flex-col items-start gap-2 max-w-sm lg:h-72 pt-5">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gradient-primary" viewBox="0 0 256 256" fill="none">
+        <g stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M56 56v55.1c0 39.7 31.8 72.6 71.5 72.9a72 72 0 0 0 72.5-72V56a8 8 0 0 0-8-8H64a8 8 0 0 0-8 8Z" />
+          <path d="M40 72l40 40m0-40L40 112m136 56 40 40m0-40-40 40M136 80V40h40m0 56-16-16c-40-40-8-88 24-96"></path>
+        </g>
+      </svg>
+      <h2 class="text-4xl font-bold mb-3">UX/UI and SEO</h2>
+      <p class="text-gray-300 text-xl font-medium">
+        I'm passionate about crafting pixel-perfect designs and structuring
+        content that not only enhances business engagement but also drives
+        revenue.
+      </p>
+    </div>
+
+    <!-- Full Stack -->
+    <div class=" flex flex-col items-start gap-2 max-w-sm lg:h-72 pt-5 ">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gradient-primary" viewBox="0 0 256 256" fill="none">
+        <g stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M56 56v55.1c0 39.7 31.8 72.6 71.5 72.9a72 72 0 0 0 72.5-72V56a8 8 0 0 0-8-8H64a8 8 0 0 0-8 8Zm40 168h64m-32-40v40" />
+          <path d="M198.2 128h9.8a32 32 0 0 0 32-32V80a8 8 0 0 0-8-8h-32M58 128H47.9a32 32 0 0 1-32-32V80a8 8 0 0 1 8-8h32" />
+        </g>
+      </svg>
+      <h2 class="text-4xl font-bold mb-3 mt-3">Full Stack</h2>
+      <p class="text-gray-300 text-xl font-medium">
+        I am committed to staying current with the latest technologies to
+        construct high-performing applications that are compatible across a range
+        of devices.
+      </p>
+    </div>
+
+    <!-- CI/CD and Cloud -->
+    <div class="flex flex-col items-start gap-2 max-w-sm lg:h-72 pt-5">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gradient-primary" viewBox="0 0 256 256" fill="none">
+        <g stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="68" cy="188" r="28" />
+          <path d="m40 72 40 40m0-40-40 40m136 56 40 40m0-40-40 40M136 80V40h40" />
+          <path d="m136 40 16 16c40 40 8 88-24 96"></path>
+        </g>
+      </svg>
+      <h2 class="text-4xl font-bold mb-3 mt-3">CI/CD and Cloud</h2>
+      <p class="text-gray-300 text-xl font-medium">
+        I developed optimized pipelines to efficiently deploy software to
+        meticulously designed cloud infrastructures.
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block ccontent %}
+
+<section class="h-128 bg-end-bg bg-no-repeat bg-cover text-white  md:px-16 flex items-center border-none ">
+    <div class="flex flex-col md:flex-row w-full justify-between items-center lg:ml-44 sm:ml-0 xsm:px-5">
+        <!-- Left Content -->
+        <div class="text-left space-y-6 max-w-lg">
+            <h2 class="text-6xl md:text-6xl font-bold">Selected Work</h2>
+            <p class="text-xl md:text-2xl text-gray-400">
+                Take a look below at some of my featured work for clients from the past few years.
+            </p>
+        </div>
+        <!-- Right Button -->
+        <div class="mt-6 md:mt-0  lg:mr-52">
+            <a href="{% url 'work:work' %} "
+                class="inline-flex lg:text-3xl sm:text-xl xsm:px-7 xsm:py-3  font-semibold items-center justify-center lg:px-9 lg:py-5 sm:px-6 sm:py-3  bg-gradient-to-r from-blue-500 to-pink-500 rounded-full shadow-lg  ">
+                View All
+                <span class="ml-2">→</span>
+            </a>
+        </div>
+    </div>
+</section>
+<!--fyp-->
+<section class="bg-blackish lg:h-less-screen border-none xsm:h-70vh">
+  <div class="flex  flex-col  align-middle text-center items-center pt-16 xsm:px-5">
+   <a href="{% url 'work:phonemarketplace' %}" class="lg:w-2/5 hover:shadow-xl transform hover:scale-105 transition duration-300">
+    <img  src="{% static 'images/fyp.jpg' %}" 
+    class="lg:h-128  xsm:h-56 xsm:w-full  rounded-3xl border-solid border-4  shadow-glow-gradient" 
+    alt="" >
+   </a>
+    <p class="lg:text-5xl font-bold text-white mt-8 xsm:text-3xl pb-5">Phone Marketplace</p>
+  </div>
+</section>
+    
+
+{% endblock %}

@@ -1,0 +1,155 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    {% tailwind_css %}
+</head>
+<body class=" text-white font-sans">
+    
+    <nav class="flex justify-between items-center backdrop-blur-md z-50 ">
+        <!-- Left Section -->
+        <div class="flex items-center justify-center xsm:ml-3 xsm:mt-3">
+            <div class="flex text-lg font-bold">
+                <img class="w-56" src="{% static 'images/logo1.png' %}">
+            </div>
+        </div>
+
+
+        <!-- Navigation Links -->
+        <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-pink-500 to-blue-500 rounded-full blur"></div>
+            <div class="relative lg:flex items-center bg-slate-800 px-3 py-3 rounded-full gap-5 border-solid border-2 border-purplish sm:hidden xsm:hidden">
+                <a href="{% url 'home:home' %}" 
+                   class="text-white/70 text-2xl font-medium px-5 py-2 rounded-full transition 
+                   {% if request.resolver_match.url_name == 'home' %}bg-purplish text-white{% else %}hover:bg-purplish hover:text-white{% endif %}">
+                   Home
+                </a>
+                <a href="{% url 'work:work' %}" 
+                   class="text-white/70 text-2xl font-medium px-5 py-2 rounded-full transition 
+                   {% if request.resolver_match.url_name == 'work' %}bg-purplish text-white{% else %}hover:bg-purplish hover:text-white{% endif %}">
+                   Work
+                </a>
+                <a href="{% url 'about:about' %}" 
+                   class="text-white/70 text-2xl font-medium px-5 py-2 rounded-full transition 
+                   {% if request.resolver_match.url_name == 'about' %}bg-purplish text-white{% else %}hover:bg-purplish hover:text-white{% endif %}">
+                   About
+                </a>
+            </div>
+        </div>
+        
+
+
+        <!-- Right Section -->
+        <div class="lg:flex lg:items-center lg:gap-5 md:hidden sm:hidden xsm:hidden">
+            <a href="https://github.com/fahad03425" target="_blank" class="text-white text-3xl hover:scale-110 transition  " aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256" aria-hidden="true" stroke="#fff" fill="#fff" class="astro-patnjmll" data-astro-cid-patnjmll=""> <g class="" data-astro-cid-patnjmll=""><g stroke-linecap="round" stroke-linejoin="round"><path fill="none" stroke-width="14.7" d="M55.7 167.2c13.9 1 21.3 13.1 22.2 14.6 4.2 7.2 10.4 9.6 18.3 7.1l1.1-3.4a60.3 60.3 0 0 1-25.8-11.9c-12-10.1-18-25.6-18-46.3"></path><path fill="none" stroke-width="16" d="M61.4 205.1a24.5 24.5 0 0 1-3-6.1c-3.2-7.9-7.1-10.6-7.8-11.1l-1-.6c-2.4-1.6-9.5-6.5-7.2-13.9 1.4-4.5 6-7.2 12.3-7.2h.8c4 .3 7.6 1.5 10.7 3.2-9.1-10.1-13.6-24.3-13.6-42.3 0-11.3 3.5-21.7 10.1-30.4A46.7 46.7 0 0 1 65 67.3a8.3 8.3 0 0 1 5-4.7c2.8-.9 13.3-2.7 33.2 9.9a105 105 0 0 1 50.5 0c19.9-12.6 30.4-10.8 33.2-9.9 2.3.7 4.1 2.4 5 4.7 5 12.7 4 23.2 2.6 29.4 6.7 8.7 10 18.9 10 30.4 0 42.6-25.8 54.7-43.6 58.7 1.4 4.1 2.2 8.8 2.2 13.7l-.1 23.4v2.3"></path><path fill="none" stroke-width="16" d="M160.9 185.7c1.4 4.1 2.2 8.8 2.2 13.7l-.1 23.4v2.3A98.6 98.6 0 1 0 61.4 205c-1.4-2.1-11.3-17.5-11.8-17.8-2.4-1.6-9.5-6.5-7.2-13.9 1.4-4.5 6-7.2 12.3-7.2h.8c4 .3 7.6 1.5 10.7 3.2-9.1-10.1-13.6-24.3-13.6-42.3 0-11.3 3.5-21.7 10.1-30.4A46.4 46.4 0 0 1 65 67.3a8.3 8.3 0 0 1 5-4.7c2.8-.9 13.3-2.7 33.2 9.9a105 105 0 0 1 50.5 0c19.9-12.6 30.4-10.8 33.2-9.9 2.3.7 4.1 2.4 5 4.7 5 12.7 4 23.2 2.6 29.4 6.7 8.7 10 18.9 10 30.4.1 42.6-25.8 54.7-43.6 58.6z"></path><path fill="none" stroke-width="18.7" d="m170.1 203.3 17.3-12 17.2-18.7 9.5-26.6v-27.9l-9.5-27.5"></path><path fill="none" stroke-width="22.7" d="m92.1 57.3 23.3-4.6 18.7-1.4 29.3 5.4m-110 32.6-8 16-4 21.4.6 20.3 3.4 13"></path><path fill="none" stroke-width="13.3" d="M28.8 133a100 100 0 0 0 66.9 94.4v-8.7c-22.4 1.8-33-11.5-35.6-19.8-3.4-8.6-7.8-11.4-8.5-11.8"></path></g></g>  </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/muhammad-fahad-35a83b2a7/" target="_blank" class="th:text-white th:text-3xl hover:scale-110 transition " aria-label="LinkedIn">
+              
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256" aria-hidden="true" stroke="#fff" fill="#fff" class="astro-patnjmll" data-astro-cid-patnjmll=""> <g class="" data-astro-cid-patnjmll=""><rect width="184" height="184" x="36" y="36" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" rx="8"></rect><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M120 112v64m-32-64v64m32-36a28 28 0 0 1 56 0v36"></path><circle stroke="none" cx="88" cy="80" r="12"></circle></g>  </svg>
+            </a>
+            <a href="mailto:rajafahad03425@gmail.com" class="text-white text-3xl hover:scale-110 transition " aria-label="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256" aria-hidden="true" stroke="#FFF" fill="#FFF" class="astro-patnjmll" data-astro-cid-patnjmll=""> <g class="" data-astro-cid-patnjmll=""><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.18V181.82Z"></path></g>  </svg>
+            </a>
+            <!---->
+            <div id="theme-toggle" class="flex items-center gap-2 bg-gray-800 px-4 py-2 rounded-full cursor-pointer hover:bg-gray-700 transition">
+                <i id="sun-icon" class="fas fa-sun text-yellow-400 text-xl"></i>
+                <i id="moon-icon" class="fas fa-moon text-gray-400 text-xl hidden"></i>
+            </div>
+        </div>
+         
+        <button id="menu-btn"data-collapse-toggle="navbar-hamburger" type="button" class="lg:hidden absolute right-2 inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gradient-to-r from-transparent to-blue-500 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-gray-600" aria-controls="navbar-hamburger" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-10 h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+            </svg>
+          </button>
+
+
+          <div class=" hidden w-full mt-8 absolute top-9 lg:hidden bg-black rounded-lg" id="navbar-hamburger">
+            <ul class="flex flex-col font-medium rounded-lg bg-gray-900">
+              <li>
+                <a href="{% url 'home:home' %}" class="block py-2 px-3 font-bold text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Home</a>
+              </li>
+              <li>
+                <a href="{% url 'work:work' %}" class="block py-2 px-3 font-bold text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Work</a>
+              </li>
+              <li>
+                <a href="{% url 'about:about' %}" class="block py-2 px-3 font-bold text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white">About</a>
+              </li>
+              
+              <li class="border-t-2">
+                <div class="flex flex-row items-center gap-8 p-2 ml-3 my-3">
+                    <a href="https://github.com/fahad03425" target="_blank" class="text-white text-xl hover:scale-110 transition  " aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/muhammad-fahad-35a83b2a7/" target="_blank" class="text-white text-xl hover:scale-110 transition " aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:rajafahad03425@gmail.com" class="text-white text-xl hover:scale-110 transition " aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <div class="absolute right-2 flex items-center gap-2 bg-white/10 px-4 rounded-full cursor-pointer hover:bg-white/20 transition">
+                        <i class="fas fa-sun text-white text-xl"></i>
+                        <i class="fas fa-moon text-white text-xl"></i>
+                    </div>
+                </div>
+              </li>
+            </ul>
+          </div> 
+    </nav>
+    
+
+    <script>
+        const menuToggle = document.getElementById('menu-btn');
+        const menu = document.getElementById('navbar-hamburger');
+    
+        menuToggle.addEventListener('click', () => {
+            const isMenuOpen = menu.classList.toggle('hidden'); // Toggle the hidden class
+            menu.classList.toggle('bg-gradient-to-r', !isMenuOpen); // Toggle gradient classes
+            menu.classList.toggle('from-transparent', !isMenuOpen);
+            menu.classList.toggle('to-blue-500', !isMenuOpen);
+    
+            menuToggle.setAttribute('aria-expanded', !isMenuOpen); // Update aria-expanded dynamically
+        });
+
+     
+            const themeToggle = document.getElementById('theme-toggle');
+            const sunIcon = document.getElementById('sun-icon');
+            const moonIcon = document.getElementById('moon-icon');
+            const html = document.documentElement; // Target the root for dark mode toggle
+        
+            themeToggle.addEventListener('click', () => {
+                html.classList.toggle('dark'); // Apply/remove the "dark" class
+        
+                // Toggle icons
+                sunIcon.classList.toggle('hidden');
+                moonIcon.classList.toggle('hidden');
+            });
+        
+            // Save theme preference in localStorage (optional)
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                html.classList.add('dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        
+            themeToggle.addEventListener('click', () => {
+                if (html.classList.contains('dark')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        
+
+    </script>
+</body>
+</html>

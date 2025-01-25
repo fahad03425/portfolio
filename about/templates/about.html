@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About|M. Fahad{% endblock %}
+
+{% block content %}
+    <section class="flex flex-col home pt-24 h-60vh">
+        <h1 class=" lg:text-8xl xsm:text-6xl text-white font-bold text-center">About</h1>
+        <p class="lg:text-4xl text-white font-semibold text-center mt-6 xsm:text-2xl">Email: rajafahad03425@gmail.com</p>
+
+        <a href="{% static 'Resume.pdf' %}"
+        target="_blank"
+        class="mt-5 text-white inline-flex lg:text-3xl sm:text-xl xsm:px-7 xsm:py-3 lg:pl-20 lg:pr-20 font-semibold items-center justify-center mx-auto lg:py-5 sm:py-3 bg-gradient-to-r from-blue-500 to-pink-500 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300">
+        CV
+        <span class="ml-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256" aria-hidden="true" stroke="currentcolor" fill="currentcolor" class="astro-patnjmll">
+                <g><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-42.34-61.66a8,8,0,0,1,0,11.32l-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L120,164.69V120a8,8,0,0,1,16,0v44.69l10.34-10.35A8,8,0,0,1,157.66,154.34Z"></path></g>
+            </svg>
+        </span>
+     </a>
+    
+{% endblock %}
+{% block bcontent %}
+<section class="bg-blackish text-white font-sans lg:mx-auto ">
+    <div class="container mx-auto py-10 lg:px-4">
+        <!-- Background Section -->
+        <div class="mb-10 lg:flex ">
+            <h1 class="flex-shrink pr-32 text-3xl font-bold mb-4">Background</h1>
+            <p class=" flex-1 text-gray-300 leading-relaxed lg:text-2xl xsm:text-2xl text-justify">
+                With 1 year of experience building dynamic web applications in domains such as e-commerce, SaaS, and marketplaces, I bring expertise in full-stack development using Django and Jinja templating. Passionate about creating innovative solutions, I am drawn to projects at the intersection of technology and user empowerment.
+
+                I thrive in environments that value collaboration, inclusivity, and diverse perspectives, ensuring that all team members are empowered to contribute their unique talents. Let’s connect to explore exciting opportunities to build impactful and user-centric applications together!
+            </p>
+        </div>
+
+        <!-- Education Section -->
+        <div class="mb-10 lg:flex ">
+            <h1 class="flex-shrink pr-40 text-3xl font-bold mb-4">Education</h1>
+            <p class="flex-1 text-gray-300 leading-relaxed lg:text-2xl xsm:text-2xl">ADCS (Associates degree in Computer Science)</p>
+        </div>
+
+        <!-- Programming Languages Section -->
+        <div class="mb-10 lg:flex ">
+            <h1 class="flex-shrink text-3xl font-bold mb-4 pr-28">
+                <span class="block">Programming</span>
+                <span class="block">Languages</span>
+            </h1>
+            <ul class="list-disc list-inside flex-1 text-gray-300 leading-relaxed lg:text-2xl xsm:text-2xl">
+                <li>Html & CSS</li>
+                <li>Python</li>
+                <li>Javascript</li>
+            </ul>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="mb-10 lg:flex ">
+            <h1 class="flex-shrink pr-56 text-3xl font-bold mb-4">Skills</h1>
+            <ul class="flex-1 text-gray-300 leading-relaxed lg:text-2xl xsm:text-2xl">
+                <li class="mb-4"><span class="font-bold">Frontend:</span>Jinja Templating, Tailwind, Bootstrap.</li>
+                <li class="mb-4"><span class="font-bold">Backend:</span>Django Framework</li>
+                <li class="mb-4"><span class="font-bold">Database:</span> PostgreSQL, MongoDB.</li>
+                <li class="mb-4"><span class="font-bold">CI/CD:</span> Git, Github</li>
+                <li class="mb-4"><span class="font-bold">Testing:</span>Selenium.</li>
+                <li class="mb-4"><span class="font-bold">Build:</span> Docker</li>
+                <li class="mb-4"><span class="font-bold">Deploy:</span>AWS (Amazon Web Services)</li>
+
+            </ul>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block ccontent %}
+    <section class="bg-blackish lg:h-less-screen border-none xsm:h-80vh ">
+        
+    <h1 class=" text-6xl text-white font-bold text-center pt-5">Explore my work</h1>
+        <div class="flex  flex-col  align-middle text-center items-center pt-16 xsm:px-5">
+         <a href="{% url 'work:phonemarketplace' %}" class="lg:w-2/5 hover:shadow-xl transform hover:scale-105 transition duration-300">
+          <img  src="{% static 'images/fyp.jpg' %}" 
+          class="lg:h-128  xsm:h-56 xsm:w-full  rounded-3xl border-solid border-4  shadow-glow-gradient" 
+          alt="" >
+         </a>
+          <p class="lg:text-5xl font-bold text-white lg:mt-8 xsm:mt-2 xsm:text-3xl">Phone Marketplace</p>
+        </div>
+      </section>
+{% endblock %}
