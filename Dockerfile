@@ -1,21 +1,27 @@
-# Use Python 3.11 slim image
 FROM python:3.11-slim
 
-# Set the working directory in the container
+# Install dependencies to run npm and build Tailwind
+RUN apt-get update && apt-get install -y \
+    nodejs \
+    npm \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
 WORKDIR /app
 
-# Install system dependencies
+# Copy the package.json and package-lock.json files
+COPY package.json package-lock.json ./
 
-# Copy requirements.txt and install dependencies
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+# Install npm packages
+RUN npm install
 
-# Copy the application files into the container
+# Copy the rest of your application
 COPY . .
 
-# Collect static files
+# Run the Django collectstatic command
 RUN python manage.py collectstatic --noinput
 
-# Set the command to run the Django app with Gunicorn
+# Set up gunicorn to serve the app
 CMD ["gunicorn", "portfolio.wsgi:application", "--bind", "0.0.0.0:8000"]
+
 
