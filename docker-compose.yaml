@@ -9,4 +9,4 @@ services:
       - .:/app
     environment:
       - DEBUG=False
-      - ALLOWED_HOSTS=3.142.130.57,your-domain.com,www.your-domain.com,
+    
