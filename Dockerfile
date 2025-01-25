@@ -15,6 +15,8 @@ COPY package.json package-lock.json ./
 # Install npm packages
 RUN npm install
 
+RUN pip install Django==5.1.4
+
 RUN pip freeze
 
 # Copy the rest of your application
