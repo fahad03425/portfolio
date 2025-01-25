@@ -15,6 +15,8 @@ COPY package.json package-lock.json ./
 # Install npm packages
 RUN npm install
 
+RUN pip freeze
+
 # Copy the rest of your application
 COPY . .
 
