@@ -5,7 +5,7 @@ services:
     region: oregon          # pick the region closest to your users
     plan: free
     buildCommand: "./build.sh"
-    startCommand: "gunicorn portfolio.wsgi:application --workers 1 --threads 2 --timeout 120 --bind 0.0.0.0:$PORT"
+    startCommand: "gunicorn portfolio.wsgi:application"
     healthCheckPath: /health/
     envVars:
       - key: SECRET_KEY
