@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 
-# Install dependencies to run npm and build Tailwind
+# Install dependencies for Node.js
 RUN apt-get update && apt-get install -y \
     nodejs \
     npm \
@@ -9,25 +9,23 @@ RUN apt-get update && apt-get install -y \
 # Set working directory
 WORKDIR /app
 
-# Copy the package.json and package-lock.json files
-COPY package.json package-lock.json ./
+# Copy requirements first to leverage Docker cache
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Install npm packages
-RUN npm install
-
-RUN pip install Django==5.1.4
-RUN pip install gunicorn django-tailwind
-
-RUN pip freeze
-
-EXPOSE 8000
-# Copy the rest of your application
+# Copy the rest of the application code
 COPY . .
 
-# Run the Django collectstatic command
+# Install npm dependencies and build Tailwind CSS
+RUN cd theme/static_src && npm install && npm run build
+
+# Collect static files with Whitenoise
 RUN python manage.py collectstatic --noinput
 
-# Set up gunicorn to serve the app
-CMD ["gunicorn", "portfolio.wsgi:application", "--bind", "0.0.0.0:8000"]
+# Run migrations (Optional: better run at start, but doing it here for simplicity)
+RUN python manage.py migrate
 
+EXPOSE 8000
 
+# Set up gunicorn to serve the app efficiently
+CMD ["gunicorn", "portfolio.wsgi:application", "--workers", "1", "--threads", "2", "--bind", "0.0.0.0:8000"]
