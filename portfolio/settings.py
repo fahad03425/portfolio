@@ -1,23 +1,25 @@
 from pathlib import Path
 import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# ---------------------------------------------------------------------------
+# Environment-based configuration
+# Set DEBUG=True in your local environment; leave unset (or False) on Render
+# ---------------------------------------------------------------------------
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    'django-insecure-8(6ko5+&&jw)iyw@(wxip$+9zd8^h8x54rr8!i&$q80sb&%ep0'  # dev fallback only
+)
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8(6ko5+&&jw)iyw@(wxip$+9zd8^h8x54rr8!i&$q80sb&%ep0'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS_ENV = os.environ.get('ALLOWED_HOSTS', '')
+ALLOWED_HOSTS = [h.strip() for h in ALLOWED_HOSTS_ENV.split(',') if h.strip()] if ALLOWED_HOSTS_ENV else ['127.0.0.1', 'localhost']
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -31,14 +33,15 @@ INSTALLED_APPS = [
     'contact',
     'tailwind',
     'theme',
-    
 ]
 
-TAILWIND_APP_NAME = 'theme' # This is the name of the app that will be used to generate the tailwind files
+TAILWIND_APP_NAME = 'theme'
 INTERNAL_IPS = ['127.0.0.1']
 
 MIDDLEWARE = [
+    'django.middleware.gzip.GZipMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -52,9 +55,15 @@ ROOT_URLCONF = 'portfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR,'templates'],
-        'APP_DIRS': True,
+        'DIRS': [BASE_DIR, 'templates'],
+        'APP_DIRS': False,
         'OPTIONS': {
+            'loaders': [
+                ('django.template.loaders.cached.Loader', [
+                    'django.template.loaders.filesystem.Loader',
+                    'django.template.loaders.app_directories.Loader',
+                ]),
+            ],
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -69,8 +78,6 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -80,52 +87,40 @@ DATABASES = {
 
 
 # Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
-# Static files (CSS, JavaScript, Images)
+# ---------------------------------------------------------------------------
+# Static files
+# ---------------------------------------------------------------------------
 STATIC_URL = '/static/'
-
-# Directory where collectstatic will store static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Optional: Additional directories to find static files during development
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+if DEBUG:
+    # Development: serve originals without hashing so you don't need collectstatic
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+    WHITENOISE_USE_FINDERS = True
+else:
+    # Production: Whitenoise compresses files + adds fingerprint hashes for
+    # far-future Cache-Control headers (browsers cache CSS/images for 1 year)
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    WHITENOISE_MAX_AGE = 31536000  # 1 year cache for static assets
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

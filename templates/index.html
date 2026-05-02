@@ -26,7 +26,7 @@
 
     <!-- Right Section: Image -->
     <div class="flex flex-1 items-center justify-center align-middle lg:h-4/6">
-        <img src="{% static 'images/fahad.jpg' %}" alt="MFahad Profile" class="rounded-3xl shadow-lg  lg:w-4/5 mb-10 sm:mt-10  z-20">
+        <img src="{% static 'images/fahad.jpg' %}" alt="MFahad Profile" class="rounded-3xl shadow-lg  lg:w-4/5 mb-10 sm:mt-10  z-20" width="600" height="750" fetchpriority="high" loading="eager">
     </div>
 </section>
 {% endblock %}
@@ -110,9 +110,11 @@
 <section class="bg-blackish lg:h-less-screen border-none xsm:h-70vh">
   <div class="flex  flex-col  align-middle text-center items-center pt-16 xsm:px-5">
    <a href="{% url 'work:phonemarketplace' %}" class="lg:w-2/5 hover:shadow-xl transform hover:scale-105 transition duration-300">
-    <img  src="{% static 'images/fyp.jpg' %}" 
-    class="lg:h-128  xsm:h-56 xsm:w-full  rounded-3xl border-solid border-4  shadow-glow-gradient" 
-    alt="" >
+    <img src="{% static 'images/fyp.jpg' %}"
+    class="lg:h-128  xsm:h-56 xsm:w-full  rounded-3xl border-solid border-4  shadow-glow-gradient"
+    alt="Phone Marketplace project screenshot"
+    width="800" height="512"
+    loading="lazy">
    </a>
     <p class="lg:text-5xl font-bold text-white mt-8 xsm:text-3xl pb-5">Phone Marketplace</p>
   </div>

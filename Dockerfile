@@ -20,6 +20,7 @@ RUN pip install gunicorn django-tailwind
 
 RUN pip freeze
 
+EXPOSE 8000
 # Copy the rest of your application
 COPY . .
 

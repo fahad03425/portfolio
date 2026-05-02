@@ -5,21 +5,30 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}Muhammad Fahad — Fullstack Engineer specializing in Django, React, and modern web technologies.{% endblock %}">
     <title>{% block title %}My Website{% endblock %}</title>
+
+    <!-- Preconnect to external CDNs for faster DNS resolution -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- Font Awesome — loaded once here, not in partials -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Tailwind CSS — loaded once here -->
     {% tailwind_css %}
 </head>
 <body class="bg-gray-50">
     <!-- Main Background Section -->
     <section class="h-auto sm:min-h-full bg-top3 bg-cover bg-no-repeat relative">
         <div class="absolute inset-0 flex justify-center z-0 {% if hide_bg_image %}hidden{% endif %}">
-            <img src="{% static 'images/bg-main-dark.svg' %}" alt="Overlay" class="opacity-70">
+            <img src="{% static 'images/bg-main-dark.svg' %}" alt="Overlay" class="opacity-70" width="1920" height="1080" loading="eager">
         </div>
 
         <!-- Content Section -->
         <section class="lg:mx-32 lg:pt-20 lg:pb-1 sm:pb-10">
             <!-- Include the navbar -->
             {% include 'navbar.html' %}
-            
+
             <!-- Main content -->
             <main class="xsm:pb-2 lg:pb-0 md:pb-0">
                 {% block content %}{% endblock %}
@@ -28,14 +37,12 @@
     </section>
 
     <!-- Additional Content Section -->
-    <section class="" >
+    <section class="">
         {% block bcontent %}{% endblock %}
     </section>
     <section>
         {% block ccontent %}
-            
         {% endblock %}
-        
     </section>
 
     <!-- Footer -->
@@ -44,4 +51,3 @@
     </footer>
 </body>
 </html>
-

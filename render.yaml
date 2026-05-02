@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: portfolio
+    env: python
+    region: oregon          # pick the region closest to your users
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn portfolio.wsgi:application --workers 1 --threads 2 --timeout 120 --bind 0.0.0.0:$PORT"
+    healthCheckPath: /health/
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true      # Render auto-generates a secure random value
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: PYTHON_VERSION
+        value: "3.11.0"
