@@ -15,7 +15,17 @@ SECRET_KEY = os.environ.get(
 
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'mfahad.live,www.mfahad.live,127.0.0.1,localhost').split(',')
+ALLOWED_HOSTS = [
+    'mfahad.live',
+    'www.mfahad.live',
+    '127.0.0.1',
+    'localhost',
+    '.onrender.com',
+]
+
+env_hosts = os.environ.get('ALLOWED_HOSTS', '')
+if env_hosts:
+    ALLOWED_HOSTS.extend([h.strip() for h in env_hosts.split(',') if h.strip()])
 
 
 # Application definition
