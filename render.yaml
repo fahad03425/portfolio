@@ -1,18 +1,26 @@
+databases:
+  - name: portfolio_db
+    plan: free
+
 services:
   - type: web
     name: portfolio
     env: python
-    region: oregon          # pick the region closest to your users
+    region: oregon
     plan: free
     buildCommand: "./build.sh"
     startCommand: "gunicorn portfolio.wsgi:application"
     healthCheckPath: /health/
     envVars:
       - key: SECRET_KEY
-        generateValue: true      # Render auto-generates a secure random value
+        generateValue: true
       - key: DEBUG
         value: "False"
       - key: ALLOWED_HOSTS
-        value: ".onrender.com"
+        value: ".onrender.com,mfahad.live,www.mfahad.live"
       - key: PYTHON_VERSION
-        value: "3.11.0"
+        value: "3.12.0"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: portfolio_db
+          property: connectionString

@@ -13,7 +13,7 @@ SECRET_KEY = os.environ.get(
     'django-insecure-8(6ko5+&&jw)iyw@(wxip$+9zd8^h8x54rr8!i&$q80sb&%ep0'  # dev fallback only
 )
 
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'mfahad.live',
